@@ -1,0 +1,168 @@
+{
+  "league": {
+    "id": "12345",
+    "name": "FTFL",
+    "season": 2025
+  },
+  "teams": [
+    {
+      "id": "t1",
+      "name": "Boulder Bandits",
+      "manager": "Nick",
+      "primary": "#00B2CA",
+      "secondary": "#FFFFFF",
+      "stylePack": "v1",
+      "status": "draft",
+      "logoUrl": "/placeholders/logos/bandits.png"
+    },
+    {
+      "id": "t2",
+      "name": "Summit County Ski Bums",
+      "manager": "Jules",
+      "primary": "#1E90FF",
+      "secondary": "#F5F5F5",
+      "stylePack": "v3",
+      "status": "draft",
+      "logoUrl": "/placeholders/logos/yeti.png"
+    },
+    {
+      "id": "t3",
+      "name": "Wakarusa Wizards",
+      "manager": "Max",
+      "primary": "#6A5ACD",
+      "secondary": "#F0E68C",
+      "stylePack": "v2",
+      "status": "draft",
+      "logoUrl": "/placeholders/logos/wizards.png"
+    },
+    {
+      "id": "t4",
+      "name": "Olde Town Osos",
+      "manager": "Rosa",
+      "primary": "#FF7F50",
+      "secondary": "#2F4F4F",
+      "stylePack": "v3",
+      "status": "draft",
+      "logoUrl": "/placeholders/logos/osos.png"
+    },
+    {
+      "id": "t5",
+      "name": "Mile High Marmots",
+      "manager": "Bea",
+      "primary": "#2E8B57",
+      "secondary": "#EEE8AA",
+      "stylePack": "v1",
+      "status": "draft",
+      "logoUrl": "/placeholders/logos/marmots.png"
+    },
+    {
+      "id": "t6",
+      "name": "Flatiron Foxes",
+      "manager": "Kai",
+      "primary": "#DC143C",
+      "secondary": "#F5F5DC",
+      "stylePack": "v2",
+      "status": "draft",
+      "logoUrl": "/placeholders/logos/foxes.png"
+    },
+    {
+      "id": "t7",
+      "name": "Cache Creek Coyotes",
+      "manager": "Ari",
+      "primary": "#8A2BE2",
+      "secondary": "#FFDAB9",
+      "stylePack": "v2",
+      "status": "draft",
+      "logoUrl": "/placeholders/logos/coyotes.png"
+    },
+    {
+      "id": "t8",
+      "name": "Golden Goats",
+      "manager": "Sam",
+      "primary": "#DAA520",
+      "secondary": "#2B2B2B",
+      "stylePack": "v3",
+      "status": "draft",
+      "logoUrl": "/placeholders/logos/goats.png"
+    },
+    {
+      "id": "t9",
+      "name": "High Plains Hawks",
+      "manager": "Lee",
+      "primary": "#008080",
+      "secondary": "#FAFAFA",
+      "stylePack": "v1",
+      "status": "draft",
+      "logoUrl": "/placeholders/logos/hawks.png"
+    },
+    {
+      "id": "t10",
+      "name": "Denver Drakes",
+      "manager": "Ivy",
+      "primary": "#20B2AA",
+      "secondary": "#3A3A3A",
+      "stylePack": "v3",
+      "status": "draft",
+      "logoUrl": "/placeholders/logos/drakes.png"
+    },
+    {
+      "id": "t11",
+      "name": "Alpine Yetis",
+      "manager": "Noa",
+      "primary": "#1E90FF",
+      "secondary": "#B0E0E6",
+      "stylePack": "v1",
+      "status": "draft",
+      "logoUrl": "/placeholders/logos/yetis.png"
+    },
+    {
+      "id": "t12",
+      "name": "Timberline Titans",
+      "manager": "Zed",
+      "primary": "#556B2F",
+      "secondary": "#EEE8AA",
+      "stylePack": "v2",
+      "status": "draft",
+      "logoUrl": "/placeholders/logos/titans.png"
+    }
+  ],
+  "schedule": {
+    "week": 1,
+    "matchups": [
+      {
+        "home": "t1",
+        "away": "t2"
+      },
+      {
+        "home": "t3",
+        "away": "t4"
+      },
+      {
+        "home": "t5",
+        "away": "t6"
+      },
+      {
+        "home": "t7",
+        "away": "t8"
+      },
+      {
+        "home": "t9",
+        "away": "t10"
+      },
+      {
+        "home": "t11",
+        "away": "t12"
+      }
+    ]
+  },
+  "standings": [
+    {
+      "teamId": "t1",
+      "record": "0-0"
+    },
+    {
+      "teamId": "t2",
+      "record": "0-0"
+    }
+  ]
+}

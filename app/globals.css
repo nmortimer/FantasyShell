@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+html, body { @apply bg-bg text-text; }
+a { @apply text-neon hover:underline; }
+.neon-hover { transition: box-shadow .2s ease, transform .2s ease; }
+.neon-hover:hover { box-shadow: 0 0 16px rgba(0,224,255,.6); transform: translateY(-2px); }
