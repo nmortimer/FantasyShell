@@ -9,7 +9,8 @@ import { getLeagueData, getMatchupsForWeek } from '@/lib/provider';
  */
 export async function POST(req: NextRequest) {
   const body = await req.text();
-  const { leagueId, week = 1, tab = 'matchups' } = body ? JSON.parse(body) : {};
+  // Provide a default for leagueId to satisfy strict TS when the body is {}
+  const { leagueId = '', week = 1, tab = 'matchups' } = body ? (JSON.parse(body) as any) : {};
 
   if (!leagueId) {
     return NextResponse.json({ items: [], error: 'Missing leagueId' }, { status: 400 });
@@ -45,7 +46,14 @@ export async function POST(req: NextRequest) {
         items = matchups.map((m, i) => {
           const home = teamById.get(m.homeId)!;
           const away = teamById.get(m.awayId)!;
-          const svg = makeRecapSVG(home, away, data.league.name, week, m.homeScore ?? 0, m.awayScore ?? 0);
+          const svg = makeRecapSVG(
+            home,
+            away,
+            data.league.name,
+            week,
+            m.homeScore ?? 0,
+            m.awayScore ?? 0
+          );
           return {
             id: `wk${week}-r${i + 1}`,
             title: `${home.name} ${m.homeScore ?? 0} - ${m.awayScore ?? 0} ${away.name}`,
@@ -57,7 +65,10 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ items });
   } catch (err: any) {
-    return NextResponse.json({ items: [], error: err?.message || 'Failed to load content' }, { status: 502 });
+    return NextResponse.json(
+      { items: [], error: err?.message || 'Failed to load content' },
+      { status: 502 }
+    );
   }
 }
 
@@ -71,7 +82,12 @@ type TeamLite = {
   secondary: string;
 };
 
-function makeMatchupSVG(home: TeamLite, away: TeamLite, leagueName: string, week: number) {
+function makeMatchupSVG(
+  home: TeamLite,
+  away: TeamLite,
+  leagueName: string,
+  week: number
+) {
   return `
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
   <defs>
@@ -93,7 +109,14 @@ function makeMatchupSVG(home: TeamLite, away: TeamLite, leagueName: string, week
 </svg>`;
 }
 
-function makeRecapSVG(home: TeamLite, away: TeamLite, leagueName: string, week: number, h: number, a: number) {
+function makeRecapSVG(
+  home: TeamLite,
+  away: TeamLite,
+  leagueName: string,
+  week: number,
+  h: number,
+  a: number
+) {
   const homeWins = (h ?? 0) >= (a ?? 0);
   const glow = '0 0 22px rgba(255,215,0,0.6)';
   return `
@@ -104,8 +127,12 @@ function makeRecapSVG(home: TeamLite, away: TeamLite, leagueName: string, week: 
   <text x="600" y="112" text-anchor="middle" fill="#aaa" font-family="Oswald, Arial" font-size="18">${leagueName}</text>
   <rect x="80" y="160" width="460" height="300" fill="${home.primary}" rx="16" />
   <rect x="660" y="160" width="460" height="300" fill="${away.primary}" rx="16" />
-  <text x="310" y="350" text-anchor="middle" fill="${home.secondary}" font-size="120" font-family="Oswald, Arial" style="${homeWins ? `filter: drop-shadow(${glow});` : ''}">${h ?? 0}</text>
-  <text x="890" y="350" text-anchor="middle" fill="${away.secondary}" font-size="120" font-family="Oswald, Arial" style="${!homeWins ? `filter: drop-shadow(${glow});` : ''}">${a ?? 0}</text>
+  <text x="310" y="350" text-anchor="middle" fill="${home.secondary}" font-size="120" font-family="Oswald, Arial" style="${
+    homeWins ? `filter: drop-shadow(${glow});` : ''
+  }">${h ?? 0}</text>
+  <text x="890" y="350" text-anchor="middle" fill="${away.secondary}" font-size="120" font-family="Oswald, Arial" style="${
+    !homeWins ? `filter: drop-shadow(${glow});` : ''
+  }">${a ?? 0}</text>
   <text x="300" y="490" text-anchor="middle" fill="${home.secondary}" font-size="28" font-family="Oswald, Arial">${home.name}</text>
   <text x="900" y="490" text-anchor="middle" fill="${away.secondary}" font-size="28" font-family="Oswald, Arial">${away.name}</text>
 </svg>`;
